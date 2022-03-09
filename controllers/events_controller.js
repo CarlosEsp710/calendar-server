@@ -100,7 +100,7 @@ const deleteEvent = async (req, res = express.response) => {
 
     await Event.findByIdAndDelete(eventUid);
 
-    res.status(204);
+    res.json({ ok: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({
