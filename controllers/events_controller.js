@@ -92,7 +92,7 @@ const deleteEvent = async (req, res = express.response) => {
     }
 
     if (event.user.toString() !== req.uid) {
-      res.status(401).json({
+      return res.status(401).json({
         ok: false,
         msg: "Not authorized",
       });
