@@ -45,14 +45,14 @@ const updateEvent = async (req, res = express.response) => {
     const event = await Event.findById(eventUid);
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         ok: false,
         msg: "Event not found",
       });
     }
 
     if (event.user.toString() !== req.uid) {
-      res.status(401).json({
+      return res.status(401).json({
         ok: false,
         msg: "Not authorized",
       });
@@ -85,7 +85,7 @@ const deleteEvent = async (req, res = express.response) => {
     const event = await Event.findById(eventUid);
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         ok: false,
         msg: "Event not found",
       });
